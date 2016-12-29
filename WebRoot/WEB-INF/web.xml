@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name></display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/*.xml</param-value>
+	</context-param>
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- 缓存、gzip压缩核心过滤器 -->
+	<!--  <filter>
+		<filter-name>PageEhCacheFilter</filter-name>
+		<filter-class>com.ekc.cache.PageEhCacheFilter</filter-class>
+		<init-param>
+			<param-name>patterns</param-name>-->
+			<!-- 需要缓存的路径 -->
+			<!-- <param-value></param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>PageEhCacheFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>PageEhCacheFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>-->
+	<!--// <filter> <filter-name>CorsFilter</filter-name> <filter-class>com.ekc.filter.CorsFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>CorsFilter</filter-name> <url-pattern>*.do</url-pattern> 
+		</filter-mapping> -->
+	<!--// -->
+	<filter>
+		<filter-name>CORS</filter-name>
+		<filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+		<init-param>
+			<param-name>cors.allowOrigin</param-name>
+			<param-value>*</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.supportedMethods</param-name>
+			<param-value>GET, POST, HEAD, PUT, DELETE</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.supportedHeaders</param-name>
+			<param-value>Accept, Origin, X-Requested-With, Content-Type, Last-Modified, sid, ticket</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.exposedHeaders</param-name>
+			<param-value>Set-Cookie</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.supportsCredentials</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CORS</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<!--// -->
+	<!-- -->
+	<filter>
+		<filter-name>ticket</filter-name>
+		<filter-class>com.ekc.filter.TicketCheck</filter-class>
+		<init-param>
+			<param-name>unchecked</param-name>
+			<!-- 配置不需要ticket检查的 权限放开url -->
+			<param-value>
+        {"not_ticket":[
+         "/account.do?m=setting",
+         "/account.do?m=login",
+         "/account.do?m=register",
+         "/account.do?m=get@date=page@obj=home",
+         "/wxpay.do",
+         '/goods.do?m=get@obj=class',
+         '/goods.do?m=get',
+         '/goods.do?m=get@date=rows@obj=random',
+         '/goods.do?m=get@obj=detail',
+         '/goods.do?m=get@date=page',
+         '/versions.do?m=get@date=one',         
+         '/goods/str.do?m=get@date=list',
+         '/tb/category.do?m=get@date=list',
+         '/tb/attributes.do?m=get@g=v',
+         '/goods/goods.do?m=get@date=page',
+         '/item.do?m=up@php=php',
+         '/order/enterapply.do?m=get@date=list',
+         '/order/enterapply.do?m=get@date=page',
+         '/user/region.do?m=get@date=list',
+         '/tb/brand.do?m=get@date=list',      
+         '/goodsapply.do?m=add@date=one',
+         '/goodsapply.do?m=get@date=page',
+         '/order/proapply.do?m=get@date=page',
+         '/order/proapply.do?m=add@date=one',
+         '/tb/attributes.do?m=get@date=list'
+        ]}
+        </param-value>
+		</init-param>
+		<init-param>
+			<param-name>itempath</param-name>
+			<param-value>/api</param-value>
+		</init-param>
+		<init-param>
+			<param-name>wx_param</param-name>
+			<param-value>{"key":"Jo8hJTwEO0R2gAvH3l5UYYOWAKMbNQrg",
+"appID":"wx29581c5f8e0336ff",
+"mchID":"1232563802",
+"sdbMchID":"",
+"certLocalPath":"D:/pbdown/exc/WebRoot/WEB-INF/cert/wx/apiclient_cert.p12",
+"certPassword":"1232563802"}</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>ticket</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ticket</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<!--// -->
+	<servlet>
+		<servlet-name>fzc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fzc</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+</web-app>

@@ -1,0 +1,30 @@
+/**GnetePay.css*/
+*{ color:#333; font:12px/1.5 "STHei","Microsoft YaHei","WenQuanYi Micro Hei";  }
+.BoxBody {margin:auto; text-align:center; border:1px solid #d1e0f8; width: 800px; background-color: #f9f9f9;}
+.BoxBody .PayHead {padding : 10px 0px 5px 0px; height: 35px; border-bottom:1px solid #d1e0f8; background-color: #0078b6}
+.BoxBody .PayHead .HeadTitle {font-weight: 600; font-size: 16px; }
+.BoxBody .PayTop {border-bottom: 1px solid #d1e0f8; padding: 10px 0px 5px 0px; background-color: rgb(242, 246, 249);}
+.BoxBody .PayTop .PayTopContext { height: 30px;}
+.BoxBody .PayTop .PayTopContext span{float: left; padding-left: 90px;text-align: center; font-size: 13px;}
+.BoxBody .PayForm {margin:auto; text-align:center;}
+.BoxBody .PayForm .FormItem {clear:both; padding-top: 10px;}
+.BoxBody .PayForm .FormItem .FormLabel{float:left; width:35%; text-align:right; padding-right:5px; font-size:14px;}
+.BoxBody .PayForm .FormItem .FormInput{float:left; text-align:left; padding-left:10px; font-size:14px;}
+.BoxBody .PayForm .FormItem .FormInput input{width: 220px; height: 28px;}
+.BoxBody .PayForm .FormItem .FormInput select{width: 220px; height: 28px;}
+.BoxBody .PayForm .FormItem .FormInput input[type=checkbox]{width: 30px; height: 28px; text-align: left;}
+.BoxBody .PayForm .FormItem .FormRemark{float:left; width:30%; text-align:left; padding-left:15px; color: #ccc; }
+.BoxBody .PayForm .FormItem .FormButton {height: 30px; padding-bottom: 5px;}
+
+.BoxBody .PayFoot {border-top: 1px solid #d1e0f8; padding: 10px 0px 5px 0px; font-size: 12px;}
+
+/**信息提示样式**/
+.InfoPage {margin:auto ;text-align:center; border:1px solid #d1e0f8; background-color: #ffffcc; width: 450px; min-height: 80px; padding-top: 20px;}
+.InfoPage .InfoContext {color: red; font-weight: 200; font-size: 14px;}
+
+
+/**表列表样式**/
+.BoxBody .PayForm Table{border-collapse: collapse; border: none; width: 100%;}
+.BoxBody .PayForm Table thead tr{background: #99BBFF; font-weight: bold;}
+.BoxBody .PayForm Table thead tr td{font-weight: bold;}
+.BoxBody .PayForm Table td{ border: solid #d1e0f8 1px; text-align: center;}
